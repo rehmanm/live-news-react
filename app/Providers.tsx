@@ -1,18 +1,14 @@
-'use client'
-import React from 'react'
-import { ThemeProvider } from 'next-themes'
+"use client";
+import React, { useState } from "react";
+import { ThemeProvider } from "next-themes";
 
-function Providers({
-    children,
-  }: {
-    children: React.ReactNode;
-  }) {
+function Providers({ children }: { children: React.ReactNode }) {
+  const [enableSystem, setEnableSystem] = useState(true);
   return (
-        <ThemeProvider enableSystem={true} attribute="class">
+    <ThemeProvider enableSystem={enableSystem} attribute="class">
       {children}
-      </ThemeProvider>
- 
-  )
+    </ThemeProvider>
+  );
 }
 
-export default Providers
+export default Providers;
