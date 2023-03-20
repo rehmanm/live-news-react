@@ -42,20 +42,12 @@ export const fetchNews = async (
     }
   `;
 
-  console.log(
-    "query",
-    process.env.STEPZEN_API_KEY,
-    process.env.MEDIASTACK_API_KEY,
-    query
-  );
-
   // Fetch function with Next.js caching
   const headers = {
     "Content-Type": "application/json",
     Authorization: `Apikey ${process.env.STEPZEN_API_KEY}`,
   };
 
-  console.log(headers);
   const res = await fetch(
     "https://portchester.stepzen.net/api/quieting-ibis/__graphql",
     {
@@ -73,11 +65,9 @@ export const fetchNews = async (
       }),
     }
   );
-  console.log("Loading new data", category, keywords);
 
   const newsResponse = await res.json();
 
-  console.log("newsResponse", newsResponse);
   if (!newsResponse.errors) {
     //Sort function
     const sortedNewsResponse = sortNewsByImage(newsResponse.data.myQuery);
